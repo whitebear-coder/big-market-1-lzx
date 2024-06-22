@@ -1,5 +1,7 @@
 package cn.bugstack.infrastructure.persistent.po;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
@@ -7,6 +9,7 @@ import java.util.Date;
  * @author：linzexu
  * @date: 2024/6/16
  */
+@Data
 public class Strategy {
     /*
     自增ID

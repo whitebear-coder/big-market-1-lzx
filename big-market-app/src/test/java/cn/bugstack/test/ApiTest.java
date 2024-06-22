@@ -15,5 +15,13 @@ public class ApiTest {
     public void test() {
         log.info("测试完成!!");
     }
+    @Test
+    public void test(UserVO userVO){
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserId(userDTO.getUserId());
+        userDTO.setUserName(userVO.getUserName());
+        userDTO.setUserAge(userVO.getUserAge());
+
+    }
 
 }

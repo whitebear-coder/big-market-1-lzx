@@ -1,0 +1,2 @@
+24-06-17.21:38:40.131 [main            ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[cn.bugstack]' package. Please check your configuration.
+24-06-17.21:43:17.059 [main            ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[cn.bugstack]' package. Please check your configuration.

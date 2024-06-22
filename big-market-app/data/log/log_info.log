@@ -1,0 +1,10 @@
+24-06-17.21:38:39.720 [main            ] INFO  ApiTest                - Starting ApiTest using Java 1.8.0_291 on DESKTOP-0DBC1Q6 with PID 11940 (started by Lenovo in E:\spring\big-master\big-market\big-market-app)
+24-06-17.21:38:39.720 [main            ] INFO  ApiTest                - The following 1 profile is active: "dev"
+24-06-17.21:38:40.131 [main            ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[cn.bugstack]' package. Please check your configuration.
+24-06-17.21:38:41.152 [main            ] INFO  ApiTest                - Started ApiTest in 1.694 seconds (JVM running for 3.011)
+24-06-17.21:38:41.340 [main            ] INFO  ApiTest                - 测试完成
+24-06-17.21:43:16.632 [main            ] INFO  ApiTest                - Starting ApiTest using Java 1.8.0_291 on DESKTOP-0DBC1Q6 with PID 21048 (started by Lenovo in E:\spring\big-master\big-market\big-market-app)
+24-06-17.21:43:16.633 [main            ] INFO  ApiTest                - The following 1 profile is active: "dev"
+24-06-17.21:43:17.059 [main            ] WARN  ClassPathMapperScanner - No MyBatis mapper was found in '[cn.bugstack]' package. Please check your configuration.
+24-06-17.21:43:18.114 [main            ] INFO  ApiTest                - Started ApiTest in 1.759 seconds (JVM running for 2.364)
+24-06-17.21:43:18.272 [main            ] INFO  ApiTest                - 测试完成！

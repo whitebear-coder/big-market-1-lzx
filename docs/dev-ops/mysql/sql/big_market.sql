@@ -1,6 +1,6 @@
 # ************************************************************
 # Sequel Ace SQL dump
-# 版本号： 20050
+# 版本号:20050
 #
 # https://sequel-ace.com/
 # https://github.com/Sequel-Ace/Sequel-Ace

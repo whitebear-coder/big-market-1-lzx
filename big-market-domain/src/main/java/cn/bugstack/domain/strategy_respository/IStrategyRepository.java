@@ -1,39 +1,31 @@
 package cn.bugstack.domain.strategy_respository;
 
 import cn.bugstack.domain.strategy_model.entity.StrategyAwardEntity;
+import cn.bugstack.domain.strategy_model.entity.StrategyEntity;
+import cn.bugstack.domain.strategy_model.entity.StrategyRuleEntity;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * @description: 策略服务仓储接口
- * @author：linzexu
- * @date: 2024/6/23
+ * @author Fuzhengwei bugstack.cn @小傅哥
+ * @description 策略服务仓储接口
+ * @create 2023-12-23 09:33
  */
 public interface IStrategyRepository {
 
-    /**
-     * 获取策略对应奖品实体
-     * @param strategyId
-     * @return
-     */
     List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId);
 
-    /**
-     * 存储表
-     * @param strategyId
-     * @param rateRange
-     * @param strategyAwardSearchRateTable
-     */
-    void storeStrategyAwardSearchRateTable(Long strategyId, Integer rateRange, Map<Integer, Integer> strategyAwardSearchRateTable);
+    void storeStrategyAwardSearchRateTable(String key, Integer rateRange, Map<Integer, Integer> strategyAwardSearchRateTable);
 
-    /**
-     * 查找对应奖品信息
-     * @param strategyId
-     * @param rateKey
-     * @return
-     */
-    Integer getStrategyAwardAssemble(Long strategyId, Integer rateKey);
+    Integer getStrategyAwardAssemble(String key, Integer rateKey);
 
     int getRateRange(Long strategyId);
+
+    int getRateRange(String key);
+
+    StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
+
+    StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleModel);
+
 }

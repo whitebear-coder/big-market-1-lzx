@@ -17,6 +17,8 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import javax.annotation.Resource;
 
+import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+
 /**
  * @author Fuzhengwei bugstack.cn @小傅哥
  * @description 抽奖策略测试

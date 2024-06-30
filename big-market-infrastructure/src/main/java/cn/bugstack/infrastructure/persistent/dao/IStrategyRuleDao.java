@@ -1,19 +1,22 @@
 package cn.bugstack.infrastructure.persistent.dao;
 
-import cn.bugstack.infrastructure.persistent.po.Award;
 import cn.bugstack.infrastructure.persistent.po.StrategyRule;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
- * @description:
- * @author：linzexu
- * @date: 2024/6/16
+ * @author Fuzhengwei bugstack.cn @小傅哥
+ * @description 策略规则 DAO
+ * @create 2023-12-16 13:25
  */
 @Mapper
 public interface IStrategyRuleDao {
-    List<Award> queryStrategyRuleList();
+
+    List<StrategyRule> queryStrategyRuleList();
 
     StrategyRule queryStrategyRule(StrategyRule strategyRuleReq);
+
+    String queryStrategyRuleValue(StrategyRule strategyRule);
+
 }

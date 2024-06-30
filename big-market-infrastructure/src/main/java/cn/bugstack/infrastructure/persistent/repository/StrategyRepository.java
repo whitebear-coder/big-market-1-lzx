@@ -3,7 +3,8 @@ package cn.bugstack.infrastructure.persistent.repository;
 import cn.bugstack.domain.strategy_model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.strategy_model.entity.StrategyEntity;
 import cn.bugstack.domain.strategy_model.entity.StrategyRuleEntity;
-import cn.bugstack.domain.strategy_respository.IStrategyRepository;
+import cn.bugstack.domain.strategy_model.valobj.StrategyAwardRuleModelVO;
+import cn.bugstack.domain.strategy_repository.IStrategyRepository;
 import cn.bugstack.infrastructure.persistent.dao.IStrategyAwardDao;
 import cn.bugstack.infrastructure.persistent.dao.IStrategyDao;
 import cn.bugstack.infrastructure.persistent.dao.IStrategyRuleDao;
@@ -82,7 +83,7 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public int getRateRange(String key) {
-        return 0;
+        return redisService.getValue(Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + key);
     }
 
     @Override
@@ -119,6 +120,26 @@ public class StrategyRepository implements IStrategyRepository {
                 .ruleDesc(strategyRuleRes.getRuleDesc())
                 .build();
     }
+
+    @Override
+    public String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel) {
+        StrategyRule strategyRule = new StrategyRule();
+        strategyRule.setStrategyId(strategyId);
+        strategyRule.setAwardId(awardId);
+        strategyRule.setRuleModel(ruleModel);
+        return strategyRuleDao.queryStrategyRuleValue(strategyRule);
+
+    }
+
+    @Override
+    public StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId) {
+        StrategyAward strategyAward = new StrategyAward();
+        strategyAward.setStrategyId(strategyId);
+        strategyAward.setAwardId(awardId);
+        String ruleModels = strategyAwardDao.queryStrategyAwardRuleModels(strategyAward);
+        return StrategyAwardRuleModelVO.builder().ruleModels(ruleModels).build();
+    }
+
 
 
 }

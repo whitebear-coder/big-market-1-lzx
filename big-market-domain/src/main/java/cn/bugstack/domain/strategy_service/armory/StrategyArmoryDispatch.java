@@ -3,7 +3,7 @@ package cn.bugstack.domain.strategy_service.armory;
 import cn.bugstack.domain.strategy_model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.strategy_model.entity.StrategyEntity;
 import cn.bugstack.domain.strategy_model.entity.StrategyRuleEntity;
-import cn.bugstack.domain.strategy_respository.IStrategyRepository;
+import cn.bugstack.domain.strategy_repository.IStrategyRepository;
 import cn.bugstack.types.enums.ResponseCode;
 import cn.bugstack.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
@@ -25,22 +25,22 @@ import java.util.*;
 public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatch {
 
     @Resource
-    private IStrategyRepository respository;
+    private IStrategyRepository repository;
 
     @Override
     public boolean assembleLotteryStrategy(Long strategyId) {
         //查询策略配置
-        List<StrategyAwardEntity> strategyAwardEntities = respository.queryStrategyAwardList(strategyId);
+        List<StrategyAwardEntity> strategyAwardEntities = repository.queryStrategyAwardList(strategyId);
         //redis存储对应奖品集合
         assembleLotteryStrategy(String.valueOf(strategyId), strategyAwardEntities);
 
         //2.权重策略配置
-        StrategyEntity strategyEntity = respository.queryStrategyEntityByStrategyId(strategyId);
+        StrategyEntity strategyEntity = repository.queryStrategyEntityByStrategyId(strategyId);
         String ruleWeight = strategyEntity.getRuleWeight();
         if(ruleWeight == null) return true;
         
         //获取规则实体
-        StrategyRuleEntity strategyRuleEntity = respository.queryStrategyRule(strategyId, ruleWeight);
+        StrategyRuleEntity strategyRuleEntity = repository.queryStrategyRule(strategyId, ruleWeight);
         if(strategyRuleEntity == null){
             throw new AppException(ResponseCode.STRATEGY_RULE_WEIGHT_IS_NULL.getCode(), ResponseCode.STRATEGY_RULE_WEIGHT_IS_NULL.getInfo());
         }
@@ -92,23 +92,26 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
         }
 
         //存放到Redis
-        respository.storeStrategyAwardSearchRateTable(strategyId, shuffleStrategyAwardSearchRateTable.size(), shuffleStrategyAwardSearchRateTable);
+        repository.storeStrategyAwardSearchRateTable(strategyId, shuffleStrategyAwardSearchRateTable.size(), shuffleStrategyAwardSearchRateTable);
 
     }
 
     @Override
     public Integer getRandomAwardId(Long strategyId) {
-        int rateRange = respository.getRateRange(strategyId);
-        return respository.getStrategyAwardAssemble(String.valueOf(strategyId), new SecureRandom().nextInt(rateRange));
+        int rateRange = repository.getRateRange(strategyId);
+        return repository.getStrategyAwardAssemble(String.valueOf(strategyId), new SecureRandom().nextInt(rateRange));
     }
 
     @Override
     public Integer getRandomAwardId(Long strategyId, String ruleWeightValue) {
         String key = String.valueOf(strategyId).concat("_").concat(ruleWeightValue);
         // 分布式部署下，不一定为当前应用做的策略装配。也就是值不一定会保存到本应用，而是分布式应用，所以需要从 Redis 中获取。
-        int rateRange = respository.getRateRange(key);
+        System.out.println(key);
+        int rateRange = repository.getRateRange(key);
         // 通过生成的随机值，获取概率值奖品查找表的结果
-        return respository.getStrategyAwardAssemble(key, new SecureRandom().nextInt(rateRange));
+        //System.out.println("ok");
+        System.out.println(rateRange);
+        return repository.getStrategyAwardAssemble(key, new SecureRandom().nextInt(rateRange));
     }
 
 }

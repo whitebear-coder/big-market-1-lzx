@@ -1,6 +1,6 @@
 package cn.bugstack.domain.strategy_service.annotation;
 
-import cn.bugstack.domain.strategy_service.rule.factory.DefaultLogicFactory;
+import cn.bugstack.domain.strategy_service.rule.filter.factory.DefaultLogicFactory;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

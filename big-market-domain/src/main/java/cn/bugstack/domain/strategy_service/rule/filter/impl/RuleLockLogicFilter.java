@@ -1,12 +1,12 @@
-package cn.bugstack.domain.strategy_service.rule.impl;
+package cn.bugstack.domain.strategy_service.rule.filter.impl;
 
 import cn.bugstack.domain.strategy_model.entity.RuleActionEntity;
 import cn.bugstack.domain.strategy_model.entity.RuleMatterEntity;
 import cn.bugstack.domain.strategy_model.valobj.RuleLogicCheckTypeVO;
 import cn.bugstack.domain.strategy_repository.IStrategyRepository;
 import cn.bugstack.domain.strategy_service.annotation.LogicStrategy;
-import cn.bugstack.domain.strategy_service.rule.ILogicFilter;
-import cn.bugstack.domain.strategy_service.rule.factory.DefaultLogicFactory;
+import cn.bugstack.domain.strategy_service.rule.filter.ILogicFilter;
+import cn.bugstack.domain.strategy_service.rule.filter.factory.DefaultLogicFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

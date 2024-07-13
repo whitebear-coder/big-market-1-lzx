@@ -40,7 +40,7 @@ public class DefaultTreeFactory {
     @AllArgsConstructor
     public static class TreeActionActivity{
         private RuleLogicCheckTypeVO ruleLogicCheckType;
-        private StrategyAwardData strategyAwardData;
+        private StrategyAwardVO strategyAwardData;
 
     }
     /**
@@ -50,7 +50,7 @@ public class DefaultTreeFactory {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class StrategyAwardData{
+    public static class StrategyAwardVO{
 
         private Integer awardId;
 

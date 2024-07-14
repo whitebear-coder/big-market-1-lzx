@@ -1,9 +1,9 @@
 package cn.bugstack.test.domain;
 
-import cn.bugstack.domain.strategy_service.armory.IStrategyArmory;
-import cn.bugstack.domain.strategy_service.rule.chain.ILogicChain;
-import cn.bugstack.domain.strategy_service.rule.chain.factory.DefaultChainFactory;
-import cn.bugstack.domain.strategy_service.rule.chain.impl.RuleWeightLogicChain;
+import cn.bugstack.domain.strategy.service.armory.IStrategyArmory;
+import cn.bugstack.domain.strategy.service.rule.chain.ILogicChain;
+import cn.bugstack.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
+import cn.bugstack.domain.strategy.service.rule.chain.impl.RuleWeightLogicChain;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;

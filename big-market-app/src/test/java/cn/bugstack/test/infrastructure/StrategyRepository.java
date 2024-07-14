@@ -1,7 +1,7 @@
 package cn.bugstack.test.infrastructure;
 
-import cn.bugstack.domain.strategy_model.valobj.RuleTreeVO;
-import cn.bugstack.domain.strategy_repository.IStrategyRepository;
+import cn.bugstack.domain.strategy.model.valobj.RuleTreeVO;
+import cn.bugstack.domain.strategy.repository.IStrategyRepository;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

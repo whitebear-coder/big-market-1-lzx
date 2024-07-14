@@ -1,7 +1,7 @@
 package cn.bugstack.test.domain;
 
-import cn.bugstack.domain.strategy_service.armory.IStrategyArmory;
-import cn.bugstack.domain.strategy_service.armory.IStrategyDispatch;
+import cn.bugstack.domain.strategy.service.armory.IStrategyArmory;
+import cn.bugstack.domain.strategy.service.armory.IStrategyDispatch;
 import cn.bugstack.infrastructure.persistent.redis.IRedisService;
 import cn.bugstack.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;

@@ -22,10 +22,16 @@ public class StrategyAwardEntity {
 
     public Integer awardId;
 
+    public String awardTitle;
+
+    public String awardSubtitle;
+
     public Integer awardCount;
 
     public Integer awardCountSurplus;
 
     public BigDecimal awardRate;
+    /** 排序 **/
+    public Integer sort;
 
 }

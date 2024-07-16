@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class response<T> implements Serializable {
+public class Response<T> implements Serializable {
     private String code;
     private String info;
     private T data;

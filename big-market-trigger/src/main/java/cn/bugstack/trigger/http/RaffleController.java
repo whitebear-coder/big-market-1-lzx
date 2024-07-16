@@ -7,13 +7,19 @@ import cn.bugstack.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.strategy.service.IRaffleAward;
 import cn.bugstack.domain.strategy.service.IRaffleStrategy;
 import cn.bugstack.domain.strategy.service.armory.IStrategyArmory;
+import cn.bugstack.trigger.api.IRaffleService;
+import cn.bugstack.trigger.api.dto.RaffleAwardListRequestDTO;
+import cn.bugstack.trigger.api.dto.RaffleAwardListResponseDTO;
+import cn.bugstack.trigger.api.dto.RaffleRequestDTO;
+import cn.bugstack.trigger.api.dto.RaffleResponseDTO;
 import cn.bugstack.types.enums.ResponseCode;
+import cn.bugstack.types.exception.AppException;
+import cn.bugstack.types.model.Response;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.xml.ws.Response;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +27,7 @@ import java.util.List;
 @RestController
 @CrossOrigin("${app.config.cross-origin}")
 @RequestMapping("/api/${app.config.api-version}/raffle/")
-public class RaffleController implements IRaffleService{
+public class RaffleController implements IRaffleService {
 
     @Resource
     private IRaffleAward raffleAward;
@@ -32,7 +38,7 @@ public class RaffleController implements IRaffleService{
 
     @RequestMapping(value = "strategy_armory", method = RequestMethod.GET)
     @Override
-    private Response<Boolean> strategyArmony(@RequestParam Long strategyId){
+    public Response<Boolean> strategyArmory(Long strategyId) {
         try{
             log.info("抽奖策略装配开始 strategyId：{}", strategyId);
             boolean armoryStatus = strategyArmory.assembleLotteryStrategy(strategyId);

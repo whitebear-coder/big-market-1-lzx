@@ -8,19 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="big-market-infrastructure" />
+        <module name="big-market-api" />
         <module name="big-market-app" />
         <module name="big-market-trigger" />
         <module name="big-market-domain" />
         <module name="big-market-types" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="big-market-api" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="big-market" options="-parameters" />
+      <module name="big-market-api" options="-parameters" />
       <module name="big-market-app" options="-parameters" />
       <module name="big-market-domain" options="-parameters" />
       <module name="big-market-infrastructure" options="-parameters" />

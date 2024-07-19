@@ -1,17 +1,14 @@
-# 命令执行 docker-compose up -d
+# 命令执行 docker-compose -f docker-compose-environment.yml up -d
 version: '3.9'
 services:
   mysql:
-    image: atomhub.openatom.cn/amd64/mysql:8.0.34
-    container_name: mysql_bMkt
+    image: mysql:8.0.32
+    container_name: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       TZ: Asia/Shanghai
-      # MYSQL_ALLOW_EMPTY_PASSWORD: 'yes' # 可配置无密码，注意配置 SPRING_DATASOURCE_PASSWORD=
       MYSQL_ROOT_PASSWORD: 123456
-      # MYSQL_USER: xfg
-      # MYSQL_PASSWORD: RTry78@#ww
     networks:
       - my-network
     depends_on:
@@ -31,15 +28,15 @@ services:
 
   # 自动加载数据
   mysql-job-dbdata:
-    image: atomhub.openatom.cn/amd64/alpine:3.18
-    container_name: mysql-job-dbdata_bMkt
+    image: alpine:3.18.2
+    container_name: mysql-job-dbdata
     volumes:
       - /var/lib/mysql
 
   # phpmyadmin https://hub.docker.com/_/phpmyadmin
   phpmyadmin:
-    image: atomhub.openatom.cn/amd64/phpmyadmin:5.2.1
-    container_name: phpmyadmin_bMkt
+    image: phpmyadmin:5.2.1
+    container_name: phpmyadmin
     hostname: phpmyadmin
     ports:
       - 8899:80
@@ -55,8 +52,8 @@ services:
 
   # Redis
   redis:
-    image: atomhub.openatom.cn/amd64/redis:7.2.1
-    container_name: redis_bMkt
+    image: redis:6.2
+    container_name: redis
     restart: always
     hostname: redis
     privileged: true
@@ -76,7 +73,7 @@ services:
   # RedisAdmin https://github.com/joeferner/redis-commander
   redis-admin:
     image: spryker/redis-commander:0.8.0
-    container_name: redis-admin_bMkt
+    container_name: redis-admin
     hostname: redis-commander
     restart: always
     ports:
@@ -85,6 +82,9 @@ services:
       - REDIS_HOSTS=local:redis:6379
       - HTTP_USER=admin
       - HTTP_PASSWORD=admin
+      - LANG=C.UTF-8
+      - LANGUAGE=C.UTF-8
+      - LC_ALL=C.UTF-8
     networks:
       - my-network
     depends_on:
@@ -94,4 +94,3 @@ services:
 networks:
   my-network:
     driver: bridge
-
